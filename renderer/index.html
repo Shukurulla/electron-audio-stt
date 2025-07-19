@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Системный Аудио в Текст</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>���️ Системный Аудио в Текст</h1>
+    
+    <div class="controls">
+      <button id="startBtn">Начать Запись</button>
+      <button id="stopBtn" disabled>Остановить Запись</button>
+      <div class="status">
+        <span id="status">Готов</span>
+        <div id="indicator" class="indicator"></div>
+      </div>
+    </div>
+    
+    <div class="output-section">
+      <h3>Транскрипция в Реальном Времени:</h3>
+      <textarea id="transcript" readonly placeholder="Здесь появится транскрипция..."></textarea>
+      <div class="transcript-controls">
+        <button id="clearBtn">Очистить Текст</button>
+        <button id="copyBtn">Копировать Текст</button>
+      </div>
+    </div>
+    
+    <div class="stats">
+      <div class="stat">
+        <span>Слов: </span>
+        <span id="wordCount">0</span>
+      </div>
+      <div class="stat">
+        <span>Точность: </span>
+        <span id="confidence">0%</span>
+      </div>
+      <div class="stat">
+        <span>Язык: </span>
+        <span id="language">Русский</span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

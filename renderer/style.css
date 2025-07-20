@@ -1,23 +1,23 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #141831;
   min-height: 100vh;
+  color: #fff !important;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
-  background: white;
+  background: #44475a;
   border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
-  color: #333;
   margin-bottom: 30px;
   font-weight: 300;
   font-size: 2.2em;
@@ -42,7 +42,7 @@ button {
 }
 
 #startBtn {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
 }
 
@@ -61,7 +61,8 @@ button {
   transform: translateY(-1px);
 }
 
-#stopBtn:disabled, #startBtn:disabled {
+#stopBtn:disabled,
+#startBtn:disabled {
   background: #ccc;
   cursor: not-allowed;
   transform: none;
@@ -90,9 +91,18 @@ button {
 }
 
 @keyframes pulse {
-  0% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.1); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .output-section {
@@ -100,30 +110,35 @@ button {
 }
 
 h3 {
-  color: #333;
   margin-bottom: 15px;
   font-size: 1.3em;
 }
-
-#transcript {
+.generate-text {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 49% 49%;
+}
+textarea {
   width: 100%;
   height: 350px;
   padding: 20px;
   border: 2px solid #ddd;
   border-radius: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   resize: vertical;
   box-sizing: border-box;
-  background: #fafafa;
+  background: #33384c;
+  color: #fff;
   transition: border-color 0.3s ease;
 }
 
-#transcript:focus {
+textarea:focus {
   outline: none;
   border-color: #667eea;
-  background: white;
+  background: #33384c;
 }
 
 .transcript-controls {
@@ -132,21 +147,26 @@ h3 {
   margin-top: 10px;
 }
 
-#clearBtn, #copyBtn {
+.btn {
   background: #667eea;
   color: white;
   font-size: 14px;
   padding: 8px 16px;
 }
 
-#clearBtn:hover, #copyBtn:hover {
+.btn:hover {
   background: #5a6fd8;
   transform: translateY(-1px);
 }
-
+.flex.items-center.space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .stats {
   display: flex;
   gap: 30px;
+  color: #141831;
   justify-content: center;
   padding: 20px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -156,12 +176,10 @@ h3 {
 
 .stat {
   font-weight: bold;
-  color: #555;
   font-size: 16px;
 }
 
 .stat span:first-child {
-  color: #333;
 }
 
 .stat span:last-child {
@@ -175,18 +193,18 @@ h3 {
     margin: 10px;
     padding: 20px;
   }
-  
+
   .controls {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .status {
     margin-left: 0;
     justify-content: center;
     margin-top: 10px;
   }
-  
+
   .stats {
     flex-direction: column;
     align-items: center;

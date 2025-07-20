@@ -1,13 +1,13 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require("electron");
 
 // Secure IPC API
 const electronAPI = {
   // Desktop sources olish
   getSources: async () => {
     try {
-      return await ipcRenderer.invoke('get-sources');
+      return await ipcRenderer.invoke("get-sources");
     } catch (error) {
-      console.error('Error in getSources:', error);
+      console.error("Error in getSources:", error);
       return [];
     }
   },
@@ -15,9 +15,29 @@ const electronAPI = {
   // Deepgram API key olish
   getDeepgramKey: async () => {
     try {
-      return await ipcRenderer.invoke('get-deepgram-key');
+      return await ipcRenderer.invoke("get-deepgram-key");
     } catch (error) {
-      console.error('Error in getDeepgramKey:', error);
+      console.error("Error in getDeepgramKey:", error);
+      return null;
+    }
+  },
+
+  // OpenAI API key olish
+  getOpenAIKey: async () => {
+    try {
+      return await ipcRenderer.invoke("get-openai-key");
+    } catch (error) {
+      console.error("Error in getOpenAIKey:", error);
+      return null;
+    }
+  },
+
+  // Assistant ID olish
+  getAssistantId: async () => {
+    try {
+      return await ipcRenderer.invoke("get-assistant-id");
+    } catch (error) {
+      console.error("Error in getAssistantId:", error);
       return null;
     }
   },
@@ -25,29 +45,29 @@ const electronAPI = {
   // Media constraints olish
   getMediaConstraints: async (sourceId) => {
     try {
-      return await ipcRenderer.invoke('get-media-constraints', sourceId);
+      return await ipcRenderer.invoke("get-media-constraints", sourceId);
     } catch (error) {
-      console.error('Error in getMediaConstraints:', error);
+      console.error("Error in getMediaConstraints:", error);
       return null;
     }
-  }
+  },
 };
 
 // Context bridge orqali xavfsiz API expose qilish
-contextBridge.exposeInMainWorld('electronAPI', electronAPI);
+contextBridge.exposeInMainWorld("electronAPI", electronAPI);
 
 // Console log polyfill (debugging uchun)
-contextBridge.exposeInMainWorld('electronConsole', {
-  log: (...args) => console.log('[Renderer]', ...args),
-  error: (...args) => console.error('[Renderer]', ...args),
-  warn: (...args) => console.warn('[Renderer]', ...args)
+contextBridge.exposeInMainWorld("electronConsole", {
+  log: (...args) => console.log("[Renderer]", ...args),
+  error: (...args) => console.error("[Renderer]", ...args),
+  warn: (...args) => console.warn("[Renderer]", ...args),
 });
 
 // Error handling
-window.addEventListener('error', (event) => {
-  console.error('Renderer error:', event.error);
+window.addEventListener("error", (event) => {
+  console.error("Renderer error:", event.error);
 });
 
-window.addEventListener('unhandledrejection', (event) => {
-  console.error('Unhandled promise rejection:', event.reason);
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Unhandled promise rejection:", event.reason);
 });
